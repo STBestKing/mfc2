@@ -142,5 +142,5 @@ void CMFC2Dlg::OnBnClickedShow()
 	int x = str.Find(score, 0);
 	int length = str.GetLength();
 	str = str.Right(length - x);
-	MessageBox(str);
+	MessageBox(str, CString("显示成绩"));
 }
