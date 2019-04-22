@@ -105,11 +105,8 @@ void CMFC2Dlg::OnBnClickedOk()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	//CDialogEx::OnOK();
-	CString name("姓名：");
-	CString sid("学号：");
-	CString score("成绩：");
 	UpdateData();
-	CString str = name + this->m_Name + sid + this->m_Sid + score + this->m_Value;
+	CString str = CString("姓名：") + this->m_Name + CString("学号：") + this->m_Sid + CString("成绩：") + this->m_Value;
 	this->m_ListCon.AddString(str);
 }
 
@@ -139,11 +136,8 @@ void CMFC2Dlg::OnBnClickedShow()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	CString str;
-	CString score("成绩");
 	this->m_ListCon.GetText(this->m_Listid, str);
-	int x = str.Find(score, 0);
-	int length = str.GetLength();
-	str = str.Right(length - x);
+	str = str.Right(str.GetLength() - str.Find(CString("成绩"), 0));
 	MessageBox(str, CString("显示成绩"));
 }
 
@@ -152,11 +146,8 @@ void CMFC2Dlg::SHOWSCORE()
 {
 	// TODO: 在此添加命令处理程序代码
 	CString str;
-	CString score("成绩");
 	this->m_ListCon.GetText(this->m_Listid, str);
-	int x = str.Find(score, 0);
-	int length = str.GetLength();
-	str = str.Right(length - x);
+	str = str.Right(str.GetLength() - str.Find(CString("成绩"), 0));
 	MessageBox(str, CString("显示成绩"));
 }
 
