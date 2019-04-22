@@ -89,3 +89,4 @@ BOOL CMFC2App::InitInstance()
 	return FALSE;
 }
 
+

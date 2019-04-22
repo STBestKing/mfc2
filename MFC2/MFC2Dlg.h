@@ -40,4 +40,7 @@ public:
 	CString m_Sid;
 	CString m_Value;
 	afx_msg void OnBnClickedShow();
+	afx_msg void SHOWSCORE();
+	afx_msg void DELETESCORE();
+	afx_msg void OnLbnDblclkList1();
 };

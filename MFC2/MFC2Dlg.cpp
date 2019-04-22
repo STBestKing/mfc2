@@ -13,7 +13,6 @@
 
 
 // CMFC2Dlg 对话框
-//int m_Listid;
 
 
 CMFC2Dlg::CMFC2Dlg(CWnd* pParent /*=nullptr*/)
@@ -42,6 +41,9 @@ BEGIN_MESSAGE_MAP(CMFC2Dlg, CDialogEx)
 	ON_LBN_SELCHANGE(IDC_LIST1, &CMFC2Dlg::SELCHANGE)
 	ON_BN_CLICKED(DEL, &CMFC2Dlg::OnBnClickedDel)
 	ON_BN_CLICKED(SHOW, &CMFC2Dlg::OnBnClickedShow)
+	ON_COMMAND(ID_32772, &CMFC2Dlg::SHOWSCORE)
+	ON_COMMAND(ID_32773, &CMFC2Dlg::DELETESCORE)
+	ON_LBN_DBLCLK(IDC_LIST1, &CMFC2Dlg::OnLbnDblclkList1)
 END_MESSAGE_MAP()
 
 
@@ -143,4 +145,36 @@ void CMFC2Dlg::OnBnClickedShow()
 	int length = str.GetLength();
 	str = str.Right(length - x);
 	MessageBox(str, CString("显示成绩"));
+}
+
+
+void CMFC2Dlg::SHOWSCORE()
+{
+	// TODO: 在此添加命令处理程序代码
+	CString str;
+	CString score("成绩");
+	this->m_ListCon.GetText(this->m_Listid, str);
+	int x = str.Find(score, 0);
+	int length = str.GetLength();
+	str = str.Right(length - x);
+	MessageBox(str, CString("显示成绩"));
+}
+
+
+void CMFC2Dlg::DELETESCORE()
+{
+	// TODO: 在此添加命令处理程序代码
+	this->m_ListCon.DeleteString(this->m_Listid);
+}
+
+
+void CMFC2Dlg::OnLbnDblclkList1()  //双击弹出菜单
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CMenu menu;
+	menu.LoadMenu(IDR_MENU1);
+	CMenu* pContextMenu = menu.GetSubMenu(0);
+	CPoint point;
+	GetCursorPos(&point);
+	pContextMenu->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, AfxGetMainWnd());
 }
